@@ -1,21 +1,11 @@
-import contextlib
-import socket
-from functools import partial
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer, test
+import uvicorn
+from starlette.applications import Starlette
+from starlette.routing import Mount
+from starlette.staticfiles import StaticFiles
+
+routes = [Mount("/", app=StaticFiles(directory="public"), name="static")]
+app = Starlette(debug=True, routes=routes)
 
 
 def serve():
-    handler_class = partial(SimpleHTTPRequestHandler, directory="public")
-
-    class DualStackServer(ThreadingHTTPServer):
-        def server_bind(self):
-            with contextlib.suppress(Exception):
-                self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
-            return super().server_bind()
-
-    test(
-        HandlerClass=handler_class,
-        ServerClass=DualStackServer,
-        port="5600",
-        bind="localhost",
-    )
+    uvicorn.run(app, host="localhost", port=5600)

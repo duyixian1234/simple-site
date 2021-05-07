@@ -1,5 +1,7 @@
 import importlib
+import shutil
 from concurrent.futures.thread import ThreadPoolExecutor
+from pathlib import Path
 from typing import List
 
 from pages.base import Page
@@ -15,6 +17,12 @@ def find_pages() -> List[Page]:
     return pages
 
 
-def build_pages(pages: List[Page]):
+def build_pages(pages: List[Page]) -> None:
     with ThreadPoolExecutor() as executor:
         list(executor.map(Page.render, pages))
+
+
+def clean_build() -> None:
+    path = Path("public")
+    if path.exists() and path.isdir():
+        shutil.rmtree(path)

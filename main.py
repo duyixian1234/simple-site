@@ -1,6 +1,6 @@
 import typer
 
-from helper.build import build_pages, find_pages
+from helper.build import build_pages, clean_build, find_pages
 from helper.serve import serve
 
 app = typer.Typer()
@@ -15,6 +15,12 @@ def version():
 def build():
     pages = find_pages()
     build_pages(pages)
+
+
+@app.command()
+def clean():
+    clean_build()
+    typer.echo("Build files have been removed")
 
 
 @app.command("serve")

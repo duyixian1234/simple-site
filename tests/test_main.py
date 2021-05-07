@@ -23,13 +23,13 @@ def test_build(runner: CliRunner):
     with runner.isolated_filesystem() as path:
         result = runner.invoke(app, "build")
         assert result.exit_code == 0
-        index = Path(path) / "public" / "index.html"
+        index = Path(path) / "dist" / "index.html"
         assert index.exists()
 
 
 def test_clean(runner: CliRunner):
     with runner.isolated_filesystem() as path:
-        path = Path(path) / "public"
+        path = Path(path) / "dist"
         path.mkdir()
 
         result = runner.invoke(app, "clean")

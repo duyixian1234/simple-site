@@ -23,6 +23,6 @@ def build_pages(pages: List[Page]) -> None:
         list(executor.map(Page.render, pages))
 
 
-def clean_build(path: Path = Path("public")) -> None:
+def clean_build(path: Path = Path("dist")) -> None:
     if path.exists() and os.path.isdir(path):
         shutil.rmtree(path)

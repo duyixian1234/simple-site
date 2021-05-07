@@ -16,7 +16,7 @@ def test_build(tmp_path: Path):
 
 
 def test_clean(tmp_path: Path):
-    path = tmp_path / "public"
+    path = tmp_path / "dist"
     path.mkdir()
     build.clean_build(path)
     assert not path.exists()

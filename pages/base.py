@@ -8,7 +8,7 @@ from html_dsl.elements import BaseHtmlElement as Element
 @dataclass
 class Page:
     element: Element
-    path_factory: Callable[[], Path] = lambda: Path("public")
+    path_factory: Callable[[], Path] = lambda: Path("dist")
 
     def render(self):
         path = self.path_factory()

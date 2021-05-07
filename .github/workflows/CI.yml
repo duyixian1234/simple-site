@@ -28,7 +28,7 @@ jobs:
           pylint main.py components helper pages
       - name: Check type
         run: |
-          mypy main.py components helper pages
+          mypy --ignore-missing-imports main.py components helper pages
       - name: Test with pytest
         run: |
           pytest

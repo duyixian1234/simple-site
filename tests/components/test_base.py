@@ -1,6 +1,7 @@
 from html_dsl.elements import BaseHtmlElement as Element
 
-from components.base import make_body, make_head, make_link, make_meta, make_script, make_title
+from components.base import (make_body, make_head, make_link, make_meta,
+                             make_script, make_title)
 
 
 def assert_equal(element: Element, raw: str) -> None:

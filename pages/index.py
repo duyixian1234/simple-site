@@ -1,6 +1,7 @@
 from pathlib import Path
 
-from components.base import make_body, make_head, make_html, make_link, make_meta, make_title
+from components.base import (make_body, make_head, make_html, make_link,
+                             make_meta, make_title)
 
 from .base import Page
 

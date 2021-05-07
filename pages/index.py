@@ -18,4 +18,4 @@ element = make_html(
 
 path = Path("public") / "index.html"
 
-index = Page(element, path)
+index = Page(element, lambda: path)

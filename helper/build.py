@@ -1,4 +1,5 @@
 import importlib
+import os
 import shutil
 from concurrent.futures.thread import ThreadPoolExecutor
 from pathlib import Path
@@ -22,7 +23,6 @@ def build_pages(pages: List[Page]) -> None:
         list(executor.map(Page.render, pages))
 
 
-def clean_build() -> None:
-    path = Path("public")
-    if path.exists() and path.isdir():
+def clean_build(path: Path = Path("public")) -> None:
+    if path.exists() and os.path.isdir(path):
         shutil.rmtree(path)

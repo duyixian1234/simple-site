@@ -6,14 +6,14 @@ name = "simple-site"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
+aiofiles = "^0.6.0"
 html-dsl = "^0.4.0"
 pytest = "^6.2.4"
 pytest-cov = "^2.11.1"
 python = "^3.8"
-typer = "^0.3.2"
 starlette = "^0.14.2"
+typer = "^0.3.2"
 uvicorn = "^0.13.4"
-aiofiles = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.5b0"
@@ -61,7 +61,7 @@ exclude_lines = [
   "def run()",
 ]
 fail_under = 90.0
-omit = ['*/__main__.py']
+omit = ['*/__main__.py', 'helper/serve.py']
 show_missing = true
 skip_covered = true
 skip_empty = true

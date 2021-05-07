@@ -25,7 +25,6 @@ def clean():
 
 @app.command("serve")
 def _serve():
-    build()
     serve()
 
 

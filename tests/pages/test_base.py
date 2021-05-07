@@ -7,6 +7,6 @@ from pages.base import Page
 
 def test_page(html_element: Element, raw_html: str, tmp_path: Path):
     index = tmp_path / "index.html"
-    page = Page(html_element, index)
+    page = Page(html_element, lambda: index)
     page.render()
     assert index.read_text() == raw_html
